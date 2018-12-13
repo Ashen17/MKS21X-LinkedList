@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class MyLinkedList {
   private int size;
   private Node start, end;
@@ -22,7 +24,18 @@ public class MyLinkedList {
     return result + 1;
   }
   */
-  private Node getNthNode(int index){
+
+  public MyLinkedList(int s){
+    size = s;
+    Random seed = new Random(132);
+    Node first = new Node(5);
+    start = end = first;
+    for (int i = 0; i < s; i++){
+      this.add(seed.nextInt()%10);
+      size--;
+    }
+  }
+  public Node getNthNode(int index){
     Node current = start;
     for (int i = index - 1; i > 0; i--){
       current = current.next();
