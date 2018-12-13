@@ -6,32 +6,46 @@ public class Node{
     data = val;
     prev = previous;
     next = null;
-    prev.LinkNext(this);
+    prev.setNext(this);
   }
   public Node(int val){
     data = val;
     prev = next = null;
   }
 
-  public int get(){
+  public int getData(){
     return data;
   }
+  public int setData(int i){
+    int save = data;
+    data = i;
+    return save;
+  }
 
-  public Node getNext(){
+  public Node next(){
     return next;
   }
-  private void LinkNext(Node nxt){
+  public Node prev(){
+    return prev;
+  }
+  private void setNext(Node nxt){
     next = nxt;
+  }
+  private void setPrev(Node prv){
+    prev = prv;
   }
 
   public String toString(){
+    /*
     if (next == null && prev == null)
-      return "" + get() + "\n isolated null";
+      return "" + getData() + "\n isolated null";
     else if (prev == null)
-      return "" + get() + "\n head " + getNext().get();
+      return "" + getData() + "\n head " + next().getData();
     else if (next == null)
-      return "" + get() + "\n tail " + prev.get();
-    return "" + get() + "\nPrev: "+ prev.get() + " Next " + getNext().get();
+      return "" + getData() + "\n tail " + prev.getData();
+    return "" + getData() + "\nPrev: "+ prev.getData() + " next " + next().getData();
+    */
+    return "" + getData();
   }
 
 }
