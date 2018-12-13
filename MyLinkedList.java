@@ -6,13 +6,13 @@ public class MyLinkedList {
     size = 0;
     start = end = null;
   }
-
+  /*
   public MyLinkedList(Node first, Node last){
     start = first;
     end = last;
     size = findSize(first, last);
   }
-  private int getNthNode(Node first, Node last){
+  private int findSize(Node first, Node last){
     int result = 0;
     Node current = first;
     while (current != last){
@@ -21,9 +21,16 @@ public class MyLinkedList {
     }
     return result + 1;
   }
-
-  public integer get(int index){
-    return
+  */
+  private Node getNthNode(int index){
+    Node current = start;
+    for (int i = index - 1; i > 0; i--){
+      current = current.next();
+    }
+    return current;
+  }
+  public int get(int index){
+    return getNthNode(index).getData();
   }
 
   public int size(){
