@@ -6,6 +6,7 @@ public class Node{
     data = val;
     prev = previous;
     next = null;
+    prev.LinkNext(this);
   }
   public Node(int val){
     data = val;
@@ -19,8 +20,18 @@ public class Node{
   public Node getNext(){
     return next;
   }
+  private void LinkNext(Node nxt){
+    next = nxt;
+  }
+
   public String toString(){
-    return "" + get() + "\nPrev: " + prev + " Next " + getNext();
+    if (next == null && prev == null)
+      return "" + get() + "\n isolated null";
+    else if (prev == null)
+      return "" + get() + "\n head " + getNext().get();
+    else if (next == null)
+      return "" + get() + "\n tail " + prev.get();
+    return "" + get() + "\nPrev: "+ prev.get() + " Next " + getNext().get();
   }
 
 }
