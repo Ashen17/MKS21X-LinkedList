@@ -12,14 +12,18 @@ public class MyLinkedList {
     end = last;
     size = findSize(first, last);
   }
-  private static int findSize(Node first, Node last){
+  private int getNthNode(Node first, Node last){
     int result = 0;
     Node current = first;
     while (current != last){
-      current = current.getNext();
+      current = current.next();
       result++;
     }
     return result + 1;
+  }
+
+  public integer get(int index){
+    return
   }
 
   public int size(){
@@ -41,11 +45,11 @@ public class MyLinkedList {
   public String toString(){
     if (size == 0){return "[]";}
     String result = "[";
-    result += start.get();
-    Node next = start.getNext();
+    result += start.getData();
+    Node next = start.next();
     for (int i = 1; i < size; i++){
-      result += ", " + next.get();
-      next = next.getNext();
+      result += ", " + next.getData();
+      next = next.next();
     }
     return result + "]";
   }
