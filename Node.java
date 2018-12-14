@@ -28,10 +28,10 @@ public class Node{
   public Node prev(){
     return prev;
   }
-  private void setNext(Node nxt){
+  public void setNext(Node nxt){
     next = nxt;
   }
-  private void setPrev(Node prv){
+  public void setPrev(Node prv){
     prev = prv;
   }
 

@@ -12,6 +12,7 @@ public class Driver{
     MyLinkedList list2  = new MyLinkedList(one, two);
     System.out.println(list2);
     */
+    System.out.println();
     MyLinkedList list3 = new MyLinkedList(10);
     System.out.println(list3);
     //System.out.println(list3.getNthNode(4).getData());
@@ -21,10 +22,16 @@ public class Driver{
     System.out.println(list3.contains(90));
     System.out.println(list3.indexOf(0));
     System.out.println(list3.indexOf(5));
+    System.out.println();
     MyLinkedList list4 = new MyLinkedList(2);
+    System.out.println(list4);
     System.out.println(list4.contains(-3));
     System.out.println(list4.contains(5));
     System.out.println(list.contains(1));
+    MyLinkedList data = new MyLinkedList(5);
+    System.out.println(data);
+    data.add(2, 5);
+    System.out.println(data);
 
   }
 }

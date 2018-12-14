@@ -27,7 +27,7 @@ public class MyLinkedList {
 
   public MyLinkedList(int s){
     size = s;
-    Random seed = new Random(132);
+    Random seed = new Random(130);
     Node first = new Node(5);
     start = end = first;
     for (int i = 0; i < s; i++){
@@ -65,6 +65,17 @@ public class MyLinkedList {
     }
     size++;
     return true;
+  }
+
+  public void add(int index, Integer value){
+    Node After = getNthNode(index);
+    Node Before = getNthNode(index).prev();
+    Node Current = new Node(value);
+    Current.setNext(After);
+    Current.setPrev(Before);
+    Before.setNext(Current);
+    After.setPrev(Current);
+    size++;
   }
 
   public boolean contains(Integer value){
