@@ -67,6 +67,24 @@ public class MyLinkedList {
     return true;
   }
 
+  public boolean contains(Integer value){
+    Node current = start;
+    for (int i = 0; i < size; i++, current = current.next()){
+      if (current.getData() == value){
+        return true;
+      }
+    }
+    return false;
+  }
+  public int indexOf(Integer value){
+    Node current = start;
+    for (int i = 0; i < size; i++, current = current.next()){
+      if (current.getData() == value){
+        return i;
+      }
+    }
+    return -1;
+  }
   public String toString(){
     if (size == 0){return "[]";}
     String result = "[";

@@ -16,6 +16,15 @@ public class Driver{
     System.out.println(list3);
     //System.out.println(list3.getNthNode(4).getData());
     System.out.println(list3.get(9));
-    System.out.println(list3.set(4, 8));
+    System.out.println(list3.set(5, 8));
+    System.out.println(list3.contains(2));
+    System.out.println(list3.contains(90));
+    System.out.println(list3.indexOf(0));
+    System.out.println(list3.indexOf(5));
+    MyLinkedList list4 = new MyLinkedList(2);
+    System.out.println(list4.contains(-3));
+    System.out.println(list4.contains(5));
+    System.out.println(list.contains(1));
+
   }
 }
