@@ -14,6 +14,8 @@ public class Driver{
     */
     MyLinkedList list3 = new MyLinkedList(10);
     System.out.println(list3);
-    System.out.println(list3.getNthNode(4));
+    //System.out.println(list3.getNthNode(4).getData());
+    System.out.println(list3.get(9));
+    System.out.println(list3.set(4, 8));
   }
 }

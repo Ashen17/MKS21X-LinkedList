@@ -35,17 +35,22 @@ public class MyLinkedList {
       size--;
     }
   }
-  public Node getNthNode(int index){
+  private Node getNthNode(int index){
     Node current = start;
-    for (int i = index - 1; i > 0; i--){
+    for (int i = index; i > 0; i--){
       current = current.next();
     }
     return current;
   }
-  public int get(int index){
+  public Integer get(int index){
     return getNthNode(index).getData();
   }
-
+  public Integer set(int index, Integer value){
+    Node save = getNthNode(index);
+    Integer store = save.getData();
+    save.setData(value);
+    return store;
+  }
   public int size(){
     return size;
   }
