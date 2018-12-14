@@ -96,6 +96,25 @@ public class MyLinkedList {
     }
     return -1;
   }
+  public Integer remove(int index){
+    Node After = getNthNode(index).next();
+    Node Before = getNthNode(index).prev();
+    Node Current = getNthNode(index);
+    Before.setNext(After);
+    After.setPrev(Before);
+    size--;
+    return Current.getData();
+  }
+
+  public boolean remove(Integer value){
+    if (indexOf(value) == -1){return false;}
+    Node After = getNthNode(indexOf(value)).next();
+    Node Before = getNthNode(indexOf(value)).prev();
+    Before.setNext(After);
+    After.setPrev(Before);
+    size--;
+    return true;
+  }
   public String toString(){
     if (size == 0){return "[]";}
     String result = "[";
@@ -109,3 +128,11 @@ public class MyLinkedList {
   }
 
 }
+/*
+TO DO lIST
+1) add reminder comments
+2) organize functions
+3) add error handling
+  3.1) throwing indexoutofbounds errors
+  3.2) other unfathomable errors uncaught by lackluster testing
+4) put node into the linkedlist class */

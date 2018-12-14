@@ -32,6 +32,8 @@ public class Driver{
     System.out.println(data);
     data.add(2, 5);
     System.out.println(data);
-
+    System.out.println(data.remove(3));
+    System.out.println(data);
+    System.out.println(data.remove((Integer)3));
   }
 }
