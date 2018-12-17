@@ -1,4 +1,4 @@
-import java.util.Random;
+//import java.util.Random;//here for testing purposes
 
 public class MyLinkedList {
   private int size;
@@ -9,12 +9,12 @@ public class MyLinkedList {
     start = end = null;
   }
   /*
-  public MyLinkedList(Node first, Node last){
+  public MyLinkedList(Node first, Node last){//here for testing purposes
     start = first;
     end = last;
     size = findSize(first, last);
   }
-  private int findSize(Node first, Node last){
+  private int findSize(Node first, Node last){//here for testing purposes
     int result = 0;
     Node current = first;
     while (current != last){
@@ -24,8 +24,8 @@ public class MyLinkedList {
     return result + 1;
   }
   */
-
-  public MyLinkedList(int s){
+/*
+  public MyLinkedList(int s){ //here for testing purposes
     size = s;
     Random seed = new Random(130);
     Node first = new Node(5);
@@ -35,6 +35,7 @@ public class MyLinkedList {
       size--;
     }
   }
+  */
   private Node getNthNode(int index){
     if (index < 0){throw new IndexOutOfBoundsException();}
     try {
@@ -44,7 +45,7 @@ public class MyLinkedList {
       }
       return current;
     }
-    catch (NullPointerException E){
+    catch (NullPointerException E){//when it assigns current as end.next() the index is too large.
       throw new IndexOutOfBoundsException();
     }
   }
@@ -56,8 +57,6 @@ public class MyLinkedList {
       Node save = getNthNode(index);
       Integer store = save.getData();
       save.setData(value);
-      //if (index == 0){start = save;}
-      //if (index == size() - 1){end = save;}
       return store;
     }
     catch (NullPointerException E){
@@ -69,13 +68,14 @@ public class MyLinkedList {
   }
   public boolean add(int value){
     if (size == 0) {
-      Node last = new Node(value);
+      Node last = new Node(value);//seperate instantiation, since an empty list doesnt have an end
       start = end = last;
     }
     else {
-      Node last = new Node(value, end);
+      Node last = new Node(value, end);//using this constructor seemed better than starting with the other node construcor, and continuing off that
       end = last;
     }
+    Node last = new Node(value);
     size++;
     return true;
   }
@@ -124,13 +124,13 @@ public class MyLinkedList {
     return -1;
   }
   public Integer remove(int index){
-    Node Current = getNthNode(index);
+    Node Current = getNthNode(index);//this also handles IndexOutOfBoundsException 
     Node After = Current.next();
     Node Before = Current.prev();
     if (index > 0){Before.setNext(After);}
-    else {start = Current;}
+    else {start = After;}//if index == 0, negatives are covered by the getNthNode
     if (index < size() - 1){After.setPrev(Before);}
-    else {end = Current;}
+    else {end = Before;}//if index exactly size() - 1, size() or greater are covered by getNthNode
     size--;
     return Current.getData();
   }
@@ -157,11 +157,3 @@ public class MyLinkedList {
   }
 
 }
-/*
-TO DO lIST
-1) add reminder comments
-2) organize functions
-3) add error handling
-  3.1) throwing indexoutofbounds errors
-  3.2) other unfathomable errors uncaught by lackluster testing
-4) put node into the linkedlist class */
