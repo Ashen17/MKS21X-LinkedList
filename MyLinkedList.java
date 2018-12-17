@@ -127,8 +127,10 @@ public class MyLinkedList {
     Node Current = getNthNode(index);
     Node After = Current.next();
     Node Before = Current.prev();
-    Before.setNext(After);
-    After.setPrev(Before);
+    if (index > 0){Before.setNext(After);}
+    else {start = Current;}
+    if (index < size() - 1){After.setPrev(Before);}
+    else {end = Current;}
     size--;
     return Current.getData();
   }
