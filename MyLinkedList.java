@@ -36,20 +36,32 @@ public class MyLinkedList {
     }
   }
   private Node getNthNode(int index){
-    Node current = start;
-    for (int i = index; i > 0; i--){
-      current = current.next();
+    try {
+      Node current = start;
+      for (int i = index; i > 0; i--){
+        current = current.next();
+      }
+      return current;
     }
-    return current;
+    catch (NullPointerException E){
+      throw new IndexOutOfBoundsException();
+    }
   }
   public Integer get(int index){
     return getNthNode(index).getData();
   }
   public Integer set(int index, Integer value){
-    Node save = getNthNode(index);
-    Integer store = save.getData();
-    save.setData(value);
-    return store;
+    try{
+      Node save = getNthNode(index);
+      Integer store = save.getData();
+      save.setData(value);
+      if (index == 0){start = save;}
+      if (index == size() - 1){end = save;}
+      return store;
+    }
+    catch (NullPointerException E){
+      throw new IndexOutOfBoundsException();
+    }
   }
   public int size(){
     return size;
@@ -68,14 +80,28 @@ public class MyLinkedList {
   }
 
   public void add(int index, Integer value){
-    Node After = getNthNode(index);
-    Node Before = getNthNode(index).prev();
-    Node Current = new Node(value);
-    Current.setNext(After);
-    Current.setPrev(Before);
-    Before.setNext(Current);
-    After.setPrev(Current);
-    size++;
+    try {
+      Node Current = new Node(value);
+      if (index == 0){
+        start.setPrev(Current);
+        Current.setNext(start);
+        start = Current;
+        size++;
+      }
+      else if (index == size){add(value);}
+      else {//for everything in between 0 and size,exclusive
+        Node After = getNthNode(index);
+        Node Before = After.prev();
+        Current.setNext(After);
+        Current.setPrev(Before);
+        Before.setNext(Current);
+        After.setPrev(Current);
+        size++;
+      }
+  }
+  catch (NullPointerException E){//if not between 0 and size, incusive
+    throw new IndexOutOfBoundsException();
+  }
   }
 
   public boolean contains(Integer value){
@@ -97,9 +123,9 @@ public class MyLinkedList {
     return -1;
   }
   public Integer remove(int index){
-    Node After = getNthNode(index).next();
-    Node Before = getNthNode(index).prev();
     Node Current = getNthNode(index);
+    Node After = Current.next();
+    Node Before = Current.prev();
     Before.setNext(After);
     After.setPrev(Before);
     size--;
@@ -109,7 +135,7 @@ public class MyLinkedList {
   public boolean remove(Integer value){
     if (indexOf(value) == -1){return false;}
     Node After = getNthNode(indexOf(value)).next();
-    Node Before = getNthNode(indexOf(value)).prev();
+    Node Before = After.prev().prev();
     Before.setNext(After);
     After.setPrev(Before);
     size--;
