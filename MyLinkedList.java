@@ -36,6 +36,7 @@ public class MyLinkedList {
     }
   }
   private Node getNthNode(int index){
+    if (index < 0){throw new IndexOutOfBoundsException();}
     try {
       Node current = start;
       for (int i = index; i > 0; i--){
@@ -55,8 +56,8 @@ public class MyLinkedList {
       Node save = getNthNode(index);
       Integer store = save.getData();
       save.setData(value);
-      if (index == 0){start = save;}
-      if (index == size() - 1){end = save;}
+      //if (index == 0){start = save;}
+      //if (index == size() - 1){end = save;}
       return store;
     }
     catch (NullPointerException E){
